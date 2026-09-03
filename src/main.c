@@ -47,20 +47,10 @@ static void update_server_view(void)
     }
 }
 
-static void on_toggle_server(void *user_data)
-{
-    (void)user_data;
-    s_server_running = !s_server_running;
-    tab5_sound_play_beep(s_server_running ? 1500 : 800, 40);
-    update_server_view();
-    tab5_ui_show_toast(s_server_running ? "Servidor iniciado em :8080" : "Servidor parado", 1500);
-}
-
 static void app_init(void)
 {
     tab5_system_log(2, "tab5_fileserver", "Aplicativo Servidor iniciado");
     tab5_ui_app_bar_set_title("Servidor de Arquivos");
-    tab5_ui_app_bar_add_action_button("LV_SYMBOL_PLAY", on_toggle_server, NULL);
     update_server_view();
 }
 
